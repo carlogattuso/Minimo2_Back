@@ -1,0 +1,21 @@
+{
+  "name": "minimo2-back",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "tsc && node index.js",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@types/body-parser": "^1.17.1",
+    "@types/node": "^12.12.17",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.8.1",
+    "morgan": "~1.9.1",
+    "pug": "^2.0.4",
+    "typescript": "^3.7.3"
+  }
+}
