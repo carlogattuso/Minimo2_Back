@@ -4,7 +4,7 @@ import Subject from '../models/subject';
 
 exports.addStudent = async function (req, res){
     let student = new Student(req.body);
-    let studentFound = await Student.findOne({_id:student._id});
+    let studentFound = await Student.findOne({name:student.name});
     if(!studentFound){
         return student.save()
             .then(() => res.status(200).send(student));

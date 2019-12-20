@@ -4,7 +4,7 @@ import Subject from '../models/subject';
 
 exports.addSubject = async function (req, res){
     let subject = new Subject(req.body);
-    let subjectFound = await Student.findOne({_id:subject._id});
+    let subjectFound = await Student.findOne({name:subject.name});
     if(!subjectFound){
         return subject.save()
             .then(() => res.status(200).send(subject));
@@ -31,6 +31,23 @@ exports.addStudentToSubject = async function (req, res){
         } else {
             return res.status(409).send({message: 'Student already in'});
         }
+    }
+};
+
+exports.removeStudent = async function (req, res){
+    let subjectId = req.params.subjectId;
+    let studentId = req.params.studentId;
+
+    let student = await Student.findOne({_id: studentId});
+    let subject = await Subject.findOne({_id: subjectId});
+
+    if (!student) {
+        return res.status(404).send({message: 'Student not found'});
+    } else if (!subject){
+        return res.status(404).send({message: 'Subject not found'});
+    } else {
+        await Subject.updateOne({_id: subjectId}, {$pull: {students: studentId}});
+        return res.status(200).send({message: 'Student removed successfully'});
     }
 };
 

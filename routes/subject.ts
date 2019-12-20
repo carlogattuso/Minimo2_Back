@@ -13,3 +13,4 @@ subjectRouter.get('/students/:subjectId', subject.getStudents);
 subjectRouter.post('', subject.addSubject);
 subjectRouter.delete('/:subjectId', subject.deleteSubject);
 subjectRouter.post('/addStudent', subject.addStudentToSubject);
+subjectRouter.delete('/student/:subjectId/:studentId', subject.removeStudent);
